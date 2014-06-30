@@ -15,6 +15,8 @@ Public Class Form1
     Dim rows() As Object = {row1, row2, row3, row4, row5, row6, row7, row8, row9, row10}
 
 
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         TextBox1.Text = 10000
@@ -753,12 +755,20 @@ Public Class Form1
 
             ' Start Monte Carlo Loop
             For i = 1 To Samples
+                Total_Demand = 0
                 ' Buy length Sample
                 Length_Of_Buy = Sampler(Length_Of_Buy_Dist, Length_Of_Buy_Mean, Length_Of_Buy_First, Length_Of_Buy_Second)
                 ' Redesign length Sample
                 Length_Of_Redesign = Sampler(Length_Of_Redesign_Dist, Length_Of_Redesign_Mean, Length_Of_Redesign_First, Length_Of_Redesign_Second)
+
                 ' Integer Periods in Buy Length
                 Int_Buy_Length = Math.Floor(Length_Of_Buy - Length_Of_Redesign_Mean + Length_Of_Redesign)
+                If Int_Buy_Length < 1 Then
+                    Int_Buy_Length = 0
+                ElseIf Int_Buy_Length > 10 Then
+                    Int_Buy_Length = 10
+                End If
+
                 'Sample Demands for Buy Lengths
                 For j = 1 To Int_Buy_Length
                     Demand = Demand_Sampler(j, Demand_Dist(j), Demand_Mode(j), Demand_Stdev(j), Demand_Low(j), Demand_High(j), Demand_Corr(j))
@@ -766,12 +776,43 @@ Public Class Form1
                 Next
 
                 'Account for the factional last year
-                j = Int_Buy_Length + 1
-                Demand = Demand_Sampler(j, Demand_Dist(j), Demand_Mode(j), Demand_Stdev(j), Demand_Low(j), Demand_High(j), Demand_Corr(j))
+                If Int_Buy_Length < 10 Then
+                    j = Int_Buy_Length + 1
+                    Demand = Demand_Sampler(j, Demand_Dist(j), Demand_Mode(j), Demand_Stdev(j), Demand_Low(j), Demand_High(j), Demand_Corr(j))
+                End If
                 Buy_total(i) = Total_Demand + ((Length_Of_Buy - Length_Of_Redesign_Mean + Length_Of_Redesign) - Int_Buy_Length) * Demand
                 Sum = Sum + Buy_total(i)
             Next
 
+
+            'Calculate the Mean 
+            Dim Mean_value As Single
+            Mean_value = Sum / Samples
+
+            'Calculate the Std Dev
+            Sum = 0
+            Dim Stddev_value As Single
+            For i = 1 To Samples
+                Sum = Sum + (Buy_total(i) - Mean_value) * (Buy_total(i) - Mean_value)
+            Next
+            Stddev_value = Math.Sqrt(Sum / Samples)
+
+            MsgBox("Mean: " & Mean_value & vbNewLine & "StdDev: " & Stddev_value)
+
+            'Order the Buy Totals
+            Array.Sort(Buy_total)
+
+            'Calculate Confidence Levels
+            Dim Conf_Quat As Integer = Math.Floor(Samples * Confidence)
+            Dim Confidence_Value As Single = (Buy_total(Conf_Quat) + Buy_total(Conf_Quat + 1)) / 2
+
+            Dim Charts As New Form2
+            Charts.mean_value = Mean_value
+            Charts.Stddev_value = Stddev_value
+            Charts.Samples = Samples
+            For i = 1 To Samples
+                Charts.Buy_total(i) = Buy_total(i)
+            Next
 
 
 
@@ -783,6 +824,8 @@ Public Class Form1
         End If
 
     End Sub
+
+
     Function Sampler(ByVal Dist As String, ByVal Mode As Single, ByVal First As Single, ByVal Second As Single) As Single
         Dim Z, U1, U2, Sample As Single
         U1 = Rnd()
@@ -804,13 +847,31 @@ Public Class Form1
         If Dist = "Uniform" Then
             Sample = (Second - First) * U1 + First
         End If
-        
+
         Sampler = Sample
     End Function
 
     Function Demand_Sampler(ByVal Period As Single, ByVal Dist As String, ByVal Mode As Single, ByVal Std_Dev As Single, ByVal Low As Single, ByVal High As Single, ByVal Corr As Single) As Single
         Dim Z, U1, U2, Sample As Single
+        U1 = Rnd()
+        U2 = Rnd()
 
+        If Dist = "Normal" Then
+            Z = Math.Sqrt(-2 * Math.Log(U1)) * Math.Sin(2 * Math.PI * U2)
+            Sample = Mode + Std_Dev * Z
+        End If
+
+        If Dist = "Trianglar" Then
+            Sample = Low + Math.Sqrt(U1 * (High - Low) * (Mode - Low))
+        End If
+
+        If Dist = "None" Then
+            Sample = Mode
+        End If
+
+        If Dist = "Uniform" Then
+            Sample = (High - Low) * U1 + Low
+        End If
 
         Demand_Sampler = Sample
     End Function
@@ -870,15 +931,27 @@ Public Class Form1
             If Tri > Max Then Max = Tri
             If Tri < Min Then Min = Tri
         Next
-       
+
 
         MsgBox(Rnd() & " next " & K / 10000 & "  halhfkehjh  " & vbNewLine & Max & "   osihfhs   " & tot / 10000 & " Min " & Min)
 
     End Sub
 
+
+
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim x As Single
-        x = 2.4
-        MsgBox(Math.Floor(x))
+        Dim Arr(6) As Single
+
+        Arr(1) = 4
+        Arr(2) = 4
+        Arr(3) = 3
+        Arr(4) = 2
+        Arr(5) = 9
+        Arr(6) = 1
+        Array.Sort(Arr)
+
+        MsgBox(Arr(1) & "   " & Arr(6))
+
     End Sub
+
 End Class
