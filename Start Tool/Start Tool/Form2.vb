@@ -1,19 +1,32 @@
 ﻿Public Class Form2
-    Public Property mean_value As Single
-    Public Property Stddev_value As Single
-    Public Property Samples As Single
-    Public Property Buy_total(100000) As Single()
-    Public Property Confidence_Value As Single
-
-
-
-
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Chart1.Series("Series1").Points.AddXY("Mark", 33)
-        Me.Chart1.Series("Series1").Points.AddXY("John", 31)
-        Me.Chart1.Series("Series1").Points.AddXY("John", 43)
-        Me.Chart1.Series("Series1").Points.AddXY("Mark", 50)
-        Me.Chart1.Series("")
+
+        Dim Bin_number, Bin_width, min_plot, max_plot As Single
+        'Struger Rule
+        Bin_number = 1 + Math.Log(Samples) / Math.Log(2)
+        Bin_width = 2 * Plot_Range * Stddev_value / Bin_number
+
+        min_plot = mean_value - Plot_Range * Stddev_value
+        max_plot = mean_value + Plot_Range * Stddev_value
+
+        Dim Bin_Quat(100), high_bin As Single
+        Dim Bin_name As String
+
+
+        For j = 1 To Bin_number
+            For i = 1 To Samples
+                If Buy_total(i) > (min_plot + ((j - 1) * Bin_width)) Then
+                    If Buy_total(i) <= (min_plot + (j * Bin_width)) Then
+                        Bin_Quat(j) = Bin_Quat(j) + 1
+                        high_bin = i
+                    End If
+                End If
+
+            Next
+            Bin_name = CStr(Buy_total(high_bin) - Bin_width / 2)
+            MsgBox(Bin_name & " " & Bin_Quat(j))
+            Me.Chart1.Series("Series1").Points.AddXY(Bin_name, Bin_Quat(j))
+        Next
     End Sub
 End Class

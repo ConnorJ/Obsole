@@ -4,7 +4,7 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim Demand(5), Reorder(5) As Single
         Dim Total_Time, Total_Demand As Single
-        Dim A, h, T, i, time As Single
+        Dim A, h, T, time As Single
         Demand(1) = TextBox1.Text
         Demand(2) = TextBox2.Text
         Demand(3) = TextBox3.Text

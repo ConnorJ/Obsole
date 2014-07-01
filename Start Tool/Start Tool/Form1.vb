@@ -17,6 +17,9 @@ Public Class Form1
 
 
 
+
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         TextBox1.Text = 10000
@@ -182,7 +185,7 @@ Public Class Form1
     Private Sub UpdateBTN_Click(sender As Object, e As EventArgs) Handles UpdateBTN.Click
 
         '{"1", "Normal", "10000", "100", "NA", "NA", "0"}
-        Dim Period As Integer, Dist As String, Mode As Single, Std As Single, Low As Single, High As Single, Corr As Single
+        Dim Period As Integer, Mode As Single, Std As Single, Low As Single, High As Single
         Dim K As String
         K = "Error: " & vbNewLine
         If IsNumeric(TextBox14.Text) Then
@@ -358,9 +361,17 @@ Public Class Form1
             K = K + "Confidence is not a number." & vbNewLine
         End If
 
-        ' 
-        '
-        ' ADD ERROR LOOPS 
+        Dim Plot_Range As Single
+        If IsNumeric(TextBox3.Text) Then
+            If TextBox3.Text > 0 Then
+                Plot_Range = CSng(TextBox3.Text)
+            Else
+                K = K + "Error is smaller than Zero." & vbNewLine
+            End If
+        Else
+            K = K + "Error is not a number." & vbNewLine
+        End If
+     
         Dim Stand_Dev As Integer = CInt(TextBox3.Text)
 
         If ComboBox1.Text = "Select from..." Then
@@ -797,8 +808,6 @@ Public Class Form1
             Next
             Stddev_value = Math.Sqrt(Sum / Samples)
 
-            MsgBox("Mean: " & Mean_value & vbNewLine & "StdDev: " & Stddev_value)
-
             'Order the Buy Totals
             Array.Sort(Buy_total)
 
@@ -806,13 +815,44 @@ Public Class Form1
             Dim Conf_Quat As Integer = Math.Floor(Samples * Confidence)
             Dim Confidence_Value As Single = (Buy_total(Conf_Quat) + Buy_total(Conf_Quat + 1)) / 2
 
-            Dim Charts As New Form2
-            Charts.mean_value = Mean_value
-            Charts.Stddev_value = Stddev_value
-            Charts.Samples = Samples
-            For i = 1 To Samples
-                Charts.Buy_total(i) = Buy_total(i)
+            Dim Bin_number, Bin_width, min_plot, max_plot As Single
+            'Struger Rule
+            Bin_number = 1 + Math.Log(Samples) / Math.Log(2)
+            Bin_width = 2 * Plot_Range * Stddev_value / Bin_number
+
+            min_plot = Mean_value - Plot_Range * Stddev_value
+            max_plot = Mean_value + Plot_Range * Stddev_value
+
+            Dim Bin_Quat(100), high_bin As Single
+            Dim Bin_name As String
+
+
+            For j = 1 To Bin_number
+                For i = 1 To Samples
+                    If Buy_total(i) > (min_plot + ((j - 1) * Bin_width)) Then
+                        If Buy_total(i) <= (min_plot + (j * Bin_width)) Then
+                            Bin_Quat(j) = Bin_Quat(j) + 1
+                            high_bin = i
+                        End If
+                    End If
+
+                Next
+                Bin_name = CStr(Buy_total(high_bin) - Bin_width / 2)
+                MsgBox(Bin_name & " " & Bin_Quat(j))
+                Me.Chart1.Series("Series1").Points.AddXY(Bin_name, Bin_Quat(j))
             Next
+
+            Dim Charts_Form As New Form2
+
+            Charts_Form.ShowDialog()
+
+            'Dim Charts As New Form2
+            'Charts.mean_value = Mean_value
+            'Charts.Stddev_value = Stddev_value
+            'Charts.Samples = Samples
+            'For i = 1 To Samples
+            'Charts.Buy_total(i) = Buy_total(i)
+            'Next
 
 
 
