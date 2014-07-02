@@ -40,6 +40,16 @@ Public Class Form1
         ComboBox2.Items.Add("Trianglar")
         ComboBox2.Items.Add("Uniform")
 
+        ComboBox4.Items.Clear()
+        ComboBox4.Text = CStr(10)
+        For i = 5 To 10
+            ComboBox4.Items.Add(CStr(i))
+        Next
+        For i = 15 To 50 Step 5
+            ComboBox4.Items.Add(CStr(i))
+        Next
+
+
         DataGridView1.Rows.Clear()
         DataGridView1.ColumnCount = 7
         DataGridView1.ColumnHeadersVisible = True
@@ -372,7 +382,6 @@ Public Class Form1
             K = K + "Error is not a number." & vbNewLine
         End If
      
-        Dim Stand_Dev As Integer = CInt(TextBox3.Text)
 
         If ComboBox1.Text = "Select from..." Then
             K = K + "Select a Length of Buy Distibustion" & vbNewLine
@@ -825,7 +834,7 @@ Public Class Form1
 
             Dim Bin_Quat(100), high_bin As Single
             Dim Bin_name As String
-
+            Dim Charts_Form As New Form2
 
             For j = 1 To Bin_number
                 For i = 1 To Samples
@@ -838,25 +847,17 @@ Public Class Form1
 
                 Next
                 Bin_name = CStr(Buy_total(high_bin) - Bin_width / 2)
-                MsgBox(Bin_name & " " & Bin_Quat(j))
-                Me.Chart1.Series("Series1").Points.AddXY(Bin_name, Bin_Quat(j))
+                Charts_Form.Chart1.Series("Series1").Points.AddXY(Bin_name, Bin_Quat(j))
             Next
 
-            Dim Charts_Form As New Form2
+            Charts_Form.Label1.Text = Math.Round(Mean_value)
+            Charts_Form.Label2.Text = Math.Round(Stddev_value)
+            Charts_Form.Label3.Text = Math.Round(Confidence_Value)
+            Charts_Form.Label4.Text = Math.Round(((Mean_value) / (Total_Demand) - 1) * 100, 2) & " %"
+            Charts_Form.Label5.Text = Math.Round(Total_Demand)
 
             Charts_Form.ShowDialog()
-
-            'Dim Charts As New Form2
-            'Charts.mean_value = Mean_value
-            'Charts.Stddev_value = Stddev_value
-            'Charts.Samples = Samples
-            'For i = 1 To Samples
-            'Charts.Buy_total(i) = Buy_total(i)
-            'Next
-
-
-
-
+            
 
         Else
             ' Msgbox of read in errors on left side of screen
@@ -915,7 +916,7 @@ Public Class Form1
 
         Demand_Sampler = Sample
     End Function
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs)
         Dim Demand_Mode(10) As Single
         Dim Demand_Low(10) As Single
         Dim Demand_High(10) As Single
@@ -947,7 +948,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
         Dim Z, U1, U2 As Single
         ' http://en.wikipedia.org/wiki/Box-Muller_transform
         Dim K, Max As Single
@@ -979,7 +980,7 @@ Public Class Form1
 
 
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
         Dim Arr(6) As Single
 
         Arr(1) = 4

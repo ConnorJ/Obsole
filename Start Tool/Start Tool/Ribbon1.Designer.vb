@@ -47,6 +47,7 @@
         Me.Group2 = Me.Factory.CreateRibbonGroup
         Me.Button2 = Me.Factory.CreateRibbonButton
         Me.Button3 = Me.Factory.CreateRibbonButton
+        Me.Group3 = Me.Factory.CreateRibbonGroup
         Me.Tab1.SuspendLayout()
         Me.Group1.SuspendLayout()
         Me.Group2.SuspendLayout()
@@ -56,6 +57,7 @@
         Me.Tab1.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office
         Me.Tab1.Groups.Add(Me.Group1)
         Me.Tab1.Groups.Add(Me.Group2)
+        Me.Tab1.Groups.Add(Me.Group3)
         Me.Tab1.Label = "OBSOLESCENCE"
         Me.Tab1.Name = "Tab1"
         '
@@ -67,8 +69,10 @@
         '
         'Button1
         '
+        Me.Button1.Image = Global.Start_Tool.My.Resources.Resources.Closed_box
         Me.Button1.Label = "Life Time Buy Calc"
         Me.Button1.Name = "Button1"
+        Me.Button1.ShowImage = True
         '
         'Group2
         '
@@ -88,6 +92,11 @@
         Me.Button3.Label = "Button2"
         Me.Button3.Name = "Button3"
         Me.Button3.ShowImage = True
+        '
+        'Group3
+        '
+        Me.Group3.Label = "Group2"
+        Me.Group3.Name = "Group3"
         '
         'Ribbon1
         '
@@ -109,6 +118,7 @@
     Friend WithEvents Group2 As Microsoft.Office.Tools.Ribbon.RibbonGroup
     Friend WithEvents Button2 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Button3 As Microsoft.Office.Tools.Ribbon.RibbonButton
+    Friend WithEvents Group3 As Microsoft.Office.Tools.Ribbon.RibbonGroup
 End Class
 
 Partial Class ThisRibbonCollection
