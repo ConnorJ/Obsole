@@ -31,6 +31,10 @@ Partial Class Form1
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TextBox16 = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
+        Me.Label22 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -68,8 +72,6 @@ Partial Class Form1
         Me.Label17 = New System.Windows.Forms.Label()
         Me.TextBox12 = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -147,6 +149,8 @@ Partial Class Form1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.TextBox16)
+        Me.GroupBox1.Controls.Add(Me.Label23)
         Me.GroupBox1.Controls.Add(Me.ComboBox4)
         Me.GroupBox1.Controls.Add(Me.Label22)
         Me.GroupBox1.Controls.Add(Me.TextBox3)
@@ -158,10 +162,45 @@ Partial Class Form1
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(508, 172)
+        Me.GroupBox1.Size = New System.Drawing.Size(508, 205)
         Me.GroupBox1.TabIndex = 9
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Analysis Controls"
+        '
+        'TextBox16
+        '
+        Me.TextBox16.Location = New System.Drawing.Point(359, 159)
+        Me.TextBox16.Name = "TextBox16"
+        Me.TextBox16.Size = New System.Drawing.Size(129, 22)
+        Me.TextBox16.TabIndex = 12
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label23.Location = New System.Drawing.Point(24, 162)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(115, 17)
+        Me.Label23.TabIndex = 11
+        Me.Label23.Text = "Percent of Buffer"
+        '
+        'ComboBox4
+        '
+        Me.ComboBox4.FormattingEnabled = True
+        Me.ComboBox4.Location = New System.Drawing.Point(359, 129)
+        Me.ComboBox4.Name = "ComboBox4"
+        Me.ComboBox4.Size = New System.Drawing.Size(129, 24)
+        Me.ComboBox4.TabIndex = 10
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label22.Location = New System.Drawing.Point(26, 129)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(161, 17)
+        Me.Label22.TabIndex = 9
+        Me.Label22.Text = "Number of Time Periods"
         '
         'GroupBox2
         '
@@ -184,7 +223,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.ComboBox1)
         Me.GroupBox2.Controls.Add(Me.Label4)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(13, 190)
+        Me.GroupBox2.Location = New System.Drawing.Point(13, 234)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(507, 244)
         Me.GroupBox2.TabIndex = 10
@@ -351,7 +390,7 @@ Partial Class Form1
         Me.DataGridView1.Location = New System.Drawing.Point(19, 86)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 24
-        Me.DataGridView1.Size = New System.Drawing.Size(714, 319)
+        Me.DataGridView1.Size = New System.Drawing.Size(732, 319)
         Me.DataGridView1.TabIndex = 11
         '
         'GroupBox3
@@ -519,24 +558,6 @@ Partial Class Form1
         Me.Label16.TabIndex = 32
         Me.Label16.Text = "Mode"
         '
-        'Label22
-        '
-        Me.Label22.AutoSize = True
-        Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(26, 129)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(161, 17)
-        Me.Label22.TabIndex = 9
-        Me.Label22.Text = "Number of Time Periods"
-        '
-        'ComboBox4
-        '
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(359, 129)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(129, 24)
-        Me.ComboBox4.TabIndex = 10
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -607,4 +628,6 @@ Partial Class Form1
     Friend WithEvents TextBox15 As System.Windows.Forms.TextBox
     Friend WithEvents ComboBox4 As System.Windows.Forms.ComboBox
     Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents TextBox16 As System.Windows.Forms.TextBox
+    Friend WithEvents Label23 As System.Windows.Forms.Label
 End Class

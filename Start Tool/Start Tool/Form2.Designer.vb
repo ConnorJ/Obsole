@@ -22,38 +22,38 @@ Partial Class Form2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Chart1
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(16, 156)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Total Buy Quanties"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(662, 338)
         Me.Chart1.TabIndex = 0
         Me.Chart1.Text = "Chart1"
@@ -106,6 +106,24 @@ Partial Class Form2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Output Data"
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(355, 16)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(76, 17)
+        Me.Label11.TabIndex = 11
+        Me.Label11.Text = "Mode Only"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(252, 16)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(73, 17)
+        Me.Label10.TabIndex = 10
+        Me.Label10.Text = "Stochastic"
+        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -154,29 +172,11 @@ Partial Class Form2
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(565, 126)
+        Me.Label6.Location = New System.Drawing.Point(466, 104)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(51, 17)
         Me.Label6.TabIndex = 4
         Me.Label6.Text = "Label6"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(252, 16)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(73, 17)
-        Me.Label10.TabIndex = 10
-        Me.Label10.Text = "Stochastic"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(355, 16)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(76, 17)
-        Me.Label11.TabIndex = 11
-        Me.Label11.Text = "Mode Only"
         '
         'Form2
         '

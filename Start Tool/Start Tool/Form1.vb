@@ -12,7 +12,49 @@ Public Class Form1
     Dim row8() As String = {"8", "Normal", "10000", "100", "NA", "NA", "0"}
     Dim row9() As String = {"9", "Normal", "10000", "100", "NA", "NA", "0"}
     Dim row10() As String = {"10", "Normal", "10000", "100", "NA", "NA", "0"}
-    Dim rows() As Object = {row1, row2, row3, row4, row5, row6, row7, row8, row9, row10}
+    Dim row11() As String = {"11", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row12() As String = {"12", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row13() As String = {"13", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row14() As String = {"14", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row15() As String = {"15", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row16() As String = {"16", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row17() As String = {"17", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row18() As String = {"18", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row19() As String = {"19", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row20() As String = {"20", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row21() As String = {"21", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row22() As String = {"22", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row23() As String = {"23", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row24() As String = {"24", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row25() As String = {"25", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row26() As String = {"26", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row27() As String = {"27", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row28() As String = {"28", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row29() As String = {"29", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row30() As String = {"30", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row31() As String = {"31", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row32() As String = {"32", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row33() As String = {"33", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row34() As String = {"34", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row35() As String = {"35", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row36() As String = {"36", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row37() As String = {"37", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row38() As String = {"38", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row39() As String = {"39", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row40() As String = {"40", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row41() As String = {"41", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row42() As String = {"42", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row43() As String = {"43", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row44() As String = {"44", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row45() As String = {"45", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row46() As String = {"46", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row47() As String = {"47", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row48() As String = {"48", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row49() As String = {"49", "Normal", "10000", "100", "NA", "NA", "0"}
+    Dim row50() As String = {"50", "Normal", "10000", "100", "NA", "NA", "0"}
+
+
+    Dim rows() As Object = {row1, row2, row3, row4, row5, row6, row7, row8, row9, row10, row11, row12, row13, row14, row15, row16, row17, row18, row19, row20, row21, row22, row23, row24, row25, row26, row27, row28, row29, row30, row31, row32, row33, row34, row35, row36, row37, row38, row39, row40, row41, row42, row43, row44, row45, row46, row47, row48, row49, row50}
 
 
 
@@ -67,8 +109,12 @@ Public Class Form1
 
         ' Populate the rows. 
         Dim rowArray As String()
+        Dim count As Single
         For Each rowArray In rows
-            DataGridView1.Rows.Add(rowArray)
+            count = count + 1
+            If count <= CSng(ComboBox4.Text) Then
+                DataGridView1.Rows.Add(rowArray)
+            End If
         Next rowArray
 
 
@@ -195,20 +241,9 @@ Public Class Form1
     Private Sub UpdateBTN_Click(sender As Object, e As EventArgs) Handles UpdateBTN.Click
 
         '{"1", "Normal", "10000", "100", "NA", "NA", "0"}
-        Dim Period As Integer, Mode As Single, Std As Single, Low As Single, High As Single
+        Dim Period As String, Mode As Single, Std As Single, Low As Single, High As Single
         Dim K As String
         K = "Error: " & vbNewLine
-        If IsNumeric(TextBox14.Text) Then
-            If CSng(TextBox14.Text) >= 1 Then
-                If CSng(TextBox14.Text) <= 10 Then
-                    Period = CInt(TextBox14.Text)
-                Else : K = K & "The Selected Period is larger than 10." & vbNewLine
-                End If
-            Else : K = K & "The Selected Period is samller than 1." & vbNewLine
-            End If
-        Else
-            K = K & "The Selected Period is not a Number." & vbNewLine
-        End If
 
         If ComboBox3.Text = "Normal" Then
             If IsNumeric(TextBox12.Text) Then
@@ -258,7 +293,7 @@ Public Class Form1
             Else
                 K = K & "The Selected High is not a number." & vbNewLine
             End If
-            
+
         End If
 
         If ComboBox3.Text = "Trianglar" Then
@@ -267,7 +302,7 @@ Public Class Form1
             Else
                 K = K & "The Selected Mode is not a number." & vbNewLine
             End If
-            
+
 
             If TextBox11.Text <> "NA" Then
                 K = K & "The Selected Standard Deviation is not set equal to 'NA'." & vbNewLine
@@ -319,20 +354,38 @@ Public Class Form1
 
 
         If K = "Error: " & vbNewLine Then
-            Dim newrow() As String = {CStr(TextBox14.Text), CStr(ComboBox3.Text), CStr(TextBox12.Text), CStr(TextBox11.Text), CStr(TextBox10.Text), CStr(TextBox13.Text)}
+           Dim Periods As String = TextBox14.Text
+            If Periods.Contains(":") Then
+                Dim Colon As String() = Periods.Split(New Char() {":"c})
+                Dim q As Single
+                Dim Time_One, Time_Two As Single
+                For Each col In Colon
+                    q = q + 1
+                    If q = 1 Then Time_One = col
+                    If q = 2 Then Time_Two = col
+                Next
 
-            rows(CInt(TextBox14.Text) - 1) = {CStr(TextBox14.Text), CStr(ComboBox3.Text), CStr(TextBox12.Text), CStr(TextBox11.Text), CStr(TextBox10.Text), CStr(TextBox13.Text), CStr(TextBox15.Text)}
+                For q = Time_One To Time_Two
+                    rows(q - 1) = {CStr(q), CStr(ComboBox3.Text), CStr(TextBox12.Text), CStr(TextBox11.Text), CStr(TextBox10.Text), CStr(TextBox13.Text), CStr(TextBox15.Text)}
+                Next
+            Else
+                rows(CSng(Periods) - 1) = {CStr(Periods), CStr(ComboBox3.Text), CStr(TextBox12.Text), CStr(TextBox11.Text), CStr(TextBox10.Text), CStr(TextBox13.Text), CStr(TextBox15.Text)}
+            End If
 
             DataGridView1.Rows.Clear()
-
+            Dim Count As Single
             Dim rowArray As String()
             For Each rowArray In rows
-                DataGridView1.Rows.Add(rowArray)
+                Count = Count + 1
+                If Count <= CSng(ComboBox4.Text) Then
+                    DataGridView1.Rows.Add(rowArray)
+                End If
             Next rowArray
+
         Else
             MsgBox(K)
         End If
-        
+
     End Sub
 
 
@@ -345,10 +398,13 @@ Public Class Form1
         Dim K As String
         K = "Error: " & vbNewLine
 
-        Dim Samples As Integer
+        Dim Samples As Single
         If IsNumeric(TextBox1.Text) Then
             If TextBox1.Text > 0 Then
-                Samples = CInt(TextBox1.Text)
+                Samples = CSng(TextBox1.Text)
+                If TextBox1.Text > 100000 Then
+                    Samples = 100000
+                End If
             Else
                 K = K + "Sample is smaller than Zero." & vbNewLine
             End If
@@ -381,7 +437,21 @@ Public Class Form1
         Else
             K = K + "Error is not a number." & vbNewLine
         End If
-     
+
+        Dim Buffer As Single
+        If IsNumeric(TextBox16.Text) Then
+            If TextBox16.Text > 0 Then
+                If TextBox16.Text < 1 Then
+                    Buffer = CSng(TextBox16.Text)
+                Else
+                    K = K + "Buffer is larger than One." & vbNewLine
+                End If
+            Else
+                K = K + "Buffer is smaller than Zero." & vbNewLine
+            End If
+        Else
+            K = K + "Buffer is not a number." & vbNewLine
+        End If
 
         If ComboBox1.Text = "Select from..." Then
             K = K + "Select a Length of Buy Distibustion" & vbNewLine
@@ -501,7 +571,7 @@ Public Class Form1
                 K = K + "Length of Redesign Mode is not a Number" & vbNewLine
             End If
             If IsNumeric(TextBox8.Text) Then
-                If TextBox9.Text > TextBox8.Text Then
+                If CSng(TextBox9.Text) > CSng(TextBox8.Text) Then
                     Length_Of_Redesign_First = CSng(TextBox8.Text)
                 Else
                     K = K + "Length of Redesign Mode is smaller than Length of Redesign Low" & vbNewLine
@@ -530,244 +600,36 @@ Public Class Form1
 
 
         If K = "Error: " & vbNewLine Then
-            Dim Demand_Dist(10) As String
-            Demand_Dist(1) = row1(1)
-            Demand_Dist(2) = row2(1)
-            Demand_Dist(3) = row3(1)
-            Demand_Dist(4) = row4(1)
-            Demand_Dist(5) = row5(1)
-            Demand_Dist(6) = row6(1)
-            Demand_Dist(7) = row7(1)
-            Demand_Dist(8) = row8(1)
-            Demand_Dist(9) = row9(1)
-            Demand_Dist(10) = row10(1)
+            Dim Demand_Dist(50) As String
+            Dim Demand_Mode(50) As Single
+            Dim Demand_Stdev(50) As Single
+            Dim Demand_Low(50) As Single
+            Dim Demand_High(50) As Single
+            Dim Demand_Corr(50) As Single
 
-            Dim Demand_Mode(10) As Single
-            Dim Demand_Stdev(10) As Single
-            Dim Demand_Low(10) As Single
-            Dim Demand_High(10) As Single
-            Dim Demand_Corr(10) As Single
-
-            ' Demand Period 1
-            If Demand_Dist(1) = "Normal" Then
-                Demand_Mode(1) = CSng(row1(2))
-                Demand_Stdev(1) = CSng(row1(3))
-                Demand_Corr(1) = CSng(row1(6))
-            End If
-            If Demand_Dist(1) = "Trianglar" Then
-                Demand_Mode(1) = CSng(row1(2))
-                Demand_Low(1) = CSng(row1(4))
-                Demand_High(1) = CSng(row1(5))
-                Demand_Corr(1) = CSng(row1(6))
-            End If
-            If Demand_Dist(1) = "Uniform" Then
-                Demand_Low(1) = CSng(row1(4))
-                Demand_High(1) = CSng(row1(5))
-                Demand_Corr(1) = CSng(row1(6))
-            End If
-            If Demand_Dist(1) = "None" Then
-                Demand_Mode(1) = CSng(row1(2))
-                Demand_Corr(1) = CSng(row1(6))
-            End If
-
-            ' Demand Period 2
-            If Demand_Dist(2) = "Normal" Then
-                Demand_Mode(2) = CSng(row2(2))
-                Demand_Stdev(2) = CSng(row2(3))
-                Demand_Corr(2) = CSng(row2(6))
-            End If
-            If Demand_Dist(2) = "Trianglar" Then
-                Demand_Mode(2) = CSng(row2(2))
-                Demand_Low(2) = CSng(row2(4))
-                Demand_High(2) = CSng(row2(5))
-                Demand_Corr(2) = CSng(row2(6))
-            End If
-            If Demand_Dist(2) = "Uniform" Then
-                Demand_Low(2) = CSng(row2(4))
-                Demand_High(2) = CSng(row2(5))
-                Demand_Corr(2) = CSng(row2(6))
-            End If
-            If Demand_Dist(2) = "None" Then
-                Demand_Mode(2) = CSng(row2(2))
-                Demand_Corr(2) = CSng(row2(6))
-            End If
-
-            ' Demand Period 3
-            If Demand_Dist(3) = "Normal" Then
-                Demand_Mode(3) = CSng(row3(2))
-                Demand_Stdev(3) = CSng(row3(3))
-                Demand_Corr(3) = CSng(row3(6))
-            End If
-            If Demand_Dist(3) = "Trianglar" Then
-                Demand_Mode(3) = CSng(row3(2))
-                Demand_Low(3) = CSng(row3(4))
-                Demand_High(3) = CSng(row3(5))
-                Demand_Corr(3) = CSng(row3(6))
-            End If
-            If Demand_Dist(3) = "Uniform" Then
-                Demand_Low(3) = CSng(row3(4))
-                Demand_High(3) = CSng(row3(5))
-                Demand_Corr(3) = CSng(row3(6))
-            End If
-            If Demand_Dist(3) = "None" Then
-                Demand_Mode(3) = CSng(row3(2))
-                Demand_Corr(3) = CSng(row3(6))
-            End If
-
-            ' Demand Period 4
-            If Demand_Dist(4) = "Normal" Then
-                Demand_Mode(4) = CSng(row4(2))
-                Demand_Stdev(4) = CSng(row4(3))
-                Demand_Corr(4) = CSng(row4(6))
-            End If
-            If Demand_Dist(4) = "Trianglar" Then
-                Demand_Mode(4) = CSng(row4(2))
-                Demand_Low(4) = CSng(row4(4))
-                Demand_High(4) = CSng(row4(5))
-                Demand_Corr(4) = CSng(row4(6))
-            End If
-            If Demand_Dist(4) = "Uniform" Then
-                Demand_Low(4) = CSng(row4(4))
-                Demand_High(4) = CSng(row4(5))
-                Demand_Corr(4) = CSng(row4(6))
-            End If
-            If Demand_Dist(4) = "None" Then
-                Demand_Mode(4) = CSng(row4(2))
-                Demand_Corr(4) = CSng(row4(6))
-            End If
-
-            ' Demand Period 5
-            If Demand_Dist(5) = "Normal" Then
-                Demand_Mode(5) = CSng(row5(2))
-                Demand_Stdev(5) = CSng(row5(3))
-                Demand_Corr(5) = CSng(row5(6))
-            End If
-            If Demand_Dist(5) = "Trianglar" Then
-                Demand_Mode(5) = CSng(row5(2))
-                Demand_Low(5) = CSng(row5(4))
-                Demand_High(5) = CSng(row5(5))
-                Demand_Corr(5) = CSng(row5(6))
-            End If
-            If Demand_Dist(5) = "Uniform" Then
-                Demand_Low(5) = CSng(row5(4))
-                Demand_High(5) = CSng(row5(5))
-                Demand_Corr(5) = CSng(row5(6))
-            End If
-            If Demand_Dist(5) = "None" Then
-                Demand_Mode(5) = CSng(row5(2))
-                Demand_Corr(5) = CSng(row5(6))
-            End If
-
-            ' Demand Period 6
-            If Demand_Dist(6) = "Normal" Then
-                Demand_Mode(6) = CSng(row6(2))
-                Demand_Stdev(6) = CSng(row6(3))
-                Demand_Corr(6) = CSng(row6(6))
-            End If
-            If Demand_Dist(6) = "Trianglar" Then
-                Demand_Mode(6) = CSng(row6(2))
-                Demand_Low(6) = CSng(row6(4))
-                Demand_High(6) = CSng(row6(5))
-                Demand_Corr(6) = CSng(row6(6))
-            End If
-            If Demand_Dist(6) = "Uniform" Then
-                Demand_Low(6) = CSng(row6(4))
-                Demand_High(6) = CSng(row6(5))
-                Demand_Corr(6) = CSng(row6(6))
-            End If
-            If Demand_Dist(6) = "None" Then
-                Demand_Mode(6) = CSng(row6(2))
-                Demand_Corr(6) = CSng(row6(6))
-            End If
-
-            ' Demand Period 7
-            If Demand_Dist(7) = "Normal" Then
-                Demand_Mode(7) = CSng(row7(2))
-                Demand_Stdev(7) = CSng(row7(3))
-                Demand_Corr(7) = CSng(row7(6))
-            End If
-            If Demand_Dist(7) = "Trianglar" Then
-                Demand_Mode(7) = CSng(row7(2))
-                Demand_Low(7) = CSng(row7(4))
-                Demand_High(7) = CSng(row7(5))
-                Demand_Corr(7) = CSng(row7(6))
-            End If
-            If Demand_Dist(7) = "Uniform" Then
-                Demand_Low(7) = CSng(row7(4))
-                Demand_High(7) = CSng(row7(5))
-                Demand_Corr(7) = CSng(row7(6))
-            End If
-            If Demand_Dist(7) = "None" Then
-                Demand_Mode(7) = CSng(row7(2))
-                Demand_Corr(7) = CSng(row7(6))
-            End If
-
-            ' Demand Period 8
-            If Demand_Dist(8) = "Normal" Then
-                Demand_Mode(8) = CSng(row8(2))
-                Demand_Stdev(8) = CSng(row8(3))
-                Demand_Corr(8) = CSng(row8(6))
-            End If
-            If Demand_Dist(8) = "Trianglar" Then
-                Demand_Mode(8) = CSng(row8(2))
-                Demand_Low(8) = CSng(row8(4))
-                Demand_High(8) = CSng(row8(5))
-                Demand_Corr(8) = CSng(row8(6))
-            End If
-            If Demand_Dist(8) = "Uniform" Then
-                Demand_Low(8) = CSng(row8(4))
-                Demand_High(8) = CSng(row8(5))
-                Demand_Corr(8) = CSng(row8(6))
-            End If
-            If Demand_Dist(8) = "None" Then
-                Demand_Mode(8) = CSng(row8(2))
-                Demand_Corr(8) = CSng(row8(6))
-            End If
-
-            ' Demand Period 9
-            If Demand_Dist(9) = "Normal" Then
-                Demand_Mode(9) = CSng(row9(2))
-                Demand_Stdev(9) = CSng(row9(3))
-                Demand_Corr(9) = CSng(row9(6))
-            End If
-            If Demand_Dist(9) = "Trianglar" Then
-                Demand_Mode(9) = CSng(row9(2))
-                Demand_Low(9) = CSng(row9(4))
-                Demand_High(9) = CSng(row9(5))
-                Demand_Corr(9) = CSng(row9(6))
-            End If
-            If Demand_Dist(9) = "Uniform" Then
-                Demand_Low(9) = CSng(row9(4))
-                Demand_High(9) = CSng(row9(5))
-                Demand_Corr(9) = CSng(row9(6))
-            End If
-            If Demand_Dist(9) = "None" Then
-                Demand_Mode(9) = CSng(row9(2))
-                Demand_Corr(9) = CSng(row9(6))
-            End If
-
-            ' Demand Period 10
-            If Demand_Dist(10) = "Normal" Then
-                Demand_Mode(10) = CSng(row10(2))
-                Demand_Stdev(10) = CSng(row10(3))
-                Demand_Corr(10) = CSng(row10(6))
-            End If
-            If Demand_Dist(10) = "Trianglar" Then
-                Demand_Mode(10) = CSng(row10(2))
-                Demand_Low(10) = CSng(row10(4))
-                Demand_High(10) = CSng(row10(5))
-                Demand_Corr(10) = CSng(row10(6))
-            End If
-            If Demand_Dist(10) = "Uniform" Then
-                Demand_Low(10) = CSng(row10(4))
-                Demand_High(10) = CSng(row10(5))
-                Demand_Corr(10) = CSng(row10(6))
-            End If
-            If Demand_Dist(10) = "None" Then
-                Demand_Mode(10) = CSng(row10(2))
-                Demand_Corr(10) = CSng(row10(6))
-            End If
-
+            For j = 1 To CSng(ComboBox4.Text)
+                Demand_Dist(j) = CStr(DataGridView1.Item(1, j - 1).Value)
+                If Demand_Dist(j) = "Normal" Then
+                    Demand_Mode(j) = CSng(DataGridView1.Item(2, j - 1).Value)
+                    Demand_Stdev(j) = CSng(DataGridView1.Item(3, j - 1).Value)
+                    Demand_Corr(j) = CSng(DataGridView1.Item(6, j - 1).Value)
+                End If
+                If Demand_Dist(j) = "Trianglar" Then
+                    Demand_Mode(j) = CSng(DataGridView1.Item(2, j - 1).Value)
+                    Demand_Low(j) = CSng(DataGridView1.Item(4, j - 1).Value)
+                    Demand_High(j) = CSng(DataGridView1.Item(5, j - 1).Value)
+                    Demand_Corr(j) = CSng(DataGridView1.Item(6, j - 1).Value)
+                End If
+                If Demand_Dist(j) = "Uniform" Then
+                    Demand_Low(j) = CSng(DataGridView1.Item(4, j - 1).Value)
+                    Demand_High(j) = CSng(DataGridView1.Item(5, j - 1).Value)
+                    Demand_Corr(j) = CSng(DataGridView1.Item(6, j - 1).Value)
+                End If
+                If Demand_Dist(j) = "None" Then
+                    Demand_Mode(j) = CSng(DataGridView1.Item(2, j - 1).Value)
+                    Demand_Corr(j) = CSng(DataGridView1.Item(6, j - 1).Value)
+                End If
+            Next
 
             Dim Length_Of_Buy, Length_Of_Redesign As Single
             Dim Int_Buy_Length As Integer
@@ -785,8 +647,8 @@ Public Class Form1
                 Int_Buy_Length = Math.Floor(Length_Of_Buy - Length_Of_Redesign_Mean + Length_Of_Redesign)
                 If Int_Buy_Length < 1 Then
                     Int_Buy_Length = 0
-                ElseIf Int_Buy_Length > 10 Then
-                    Int_Buy_Length = 10
+                ElseIf Int_Buy_Length > ComboBox4.Text Then
+                    Int_Buy_Length = ComboBox4.Text
                 End If
 
                 'Sample Demands for Buy Lengths
@@ -796,7 +658,7 @@ Public Class Form1
                 Next
 
                 'Account for the factional last year
-                If Int_Buy_Length < 10 Then
+                If Int_Buy_Length < ComboBox4.Text Then
                     j = Int_Buy_Length + 1
                     Demand = Demand_Sampler(j, Demand_Dist(j), Demand_Mode(j), Demand_Stdev(j), Demand_Low(j), Demand_High(j), Demand_Corr(j))
                 End If
@@ -836,6 +698,9 @@ Public Class Form1
             Dim Bin_name As String
             Dim Charts_Form As New Form2
 
+            Dim Total_Demand_wBuffer As Single = Confidence_Value * (1 + Buffer)
+            Dim Trigger, Buffer_percent As Single
+
             For j = 1 To Bin_number
                 For i = 1 To Samples
                     If Buy_total(i) > (min_plot + ((j - 1) * Bin_width)) Then
@@ -844,10 +709,16 @@ Public Class Form1
                             high_bin = i
                         End If
                     End If
-
+                    'Calculate Buy Percentage including Buffer
+                    If Trigger = 0 Then
+                        If Buy_total(i) >= Total_Demand_wBuffer Then
+                            Trigger = 1
+                            Buffer_percent = (i / Samples)
+                        End If
+                    End If
                 Next
                 Bin_name = CStr(Buy_total(high_bin) - Bin_width / 2)
-                Charts_Form.Chart1.Series("Series1").Points.AddXY(Bin_name, Bin_Quat(j))
+                Charts_Form.Chart1.Series("Total Buy Quanties").Points.AddXY(Bin_name, Bin_Quat(j))
             Next
 
             Charts_Form.Label1.Text = Math.Round(Mean_value)
@@ -855,9 +726,13 @@ Public Class Form1
             Charts_Form.Label3.Text = Math.Round(Confidence_Value)
             Charts_Form.Label4.Text = Math.Round(((Mean_value) / (Total_Demand) - 1) * 100, 2) & " %"
             Charts_Form.Label5.Text = Math.Round(Total_Demand)
+            Charts_Form.Label6.Text = Math.Round(Buffer_percent, 4) & " %"
+
+            If CInt(TextBox1.Text) > 100000 Then
+                MsgBox("Sample was too large and was set to 100,000.")
+            End If
 
             Charts_Form.ShowDialog()
-            
 
         Else
             ' Msgbox of read in errors on left side of screen
@@ -994,5 +869,18 @@ Public Class Form1
         MsgBox(Arr(1) & "   " & Arr(6))
 
     End Sub
+
+    Private Sub ComboBox4_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox4.SelectedIndexChanged
+        Dim rowArray As String()
+        Dim K As Single
+        DataGridView1.Rows.Clear()
+        For Each rowArray In rows
+            K = K + 1
+            If K <= CSng(ComboBox4.Text) Then
+                DataGridView1.Rows.Add(rowArray)
+            End If
+        Next rowArray
+    End Sub
+
 
 End Class

@@ -48,9 +48,12 @@
         Me.Button2 = Me.Factory.CreateRibbonButton
         Me.Button3 = Me.Factory.CreateRibbonButton
         Me.Group3 = Me.Factory.CreateRibbonGroup
+        Me.EditBox1 = Me.Factory.CreateRibbonEditBox
+        Me.DropDown1 = Me.Factory.CreateRibbonDropDown
         Me.Tab1.SuspendLayout()
         Me.Group1.SuspendLayout()
         Me.Group2.SuspendLayout()
+        Me.Group3.SuspendLayout()
         '
         'Tab1
         '
@@ -64,7 +67,7 @@
         'Group1
         '
         Me.Group1.Items.Add(Me.Button1)
-        Me.Group1.Label = "Group1"
+        Me.Group1.Label = "Life Time Buy Calc"
         Me.Group1.Name = "Group1"
         '
         'Button1
@@ -95,8 +98,22 @@
         '
         'Group3
         '
+        Me.Group3.Items.Add(Me.EditBox1)
+        Me.Group3.Items.Add(Me.DropDown1)
         Me.Group3.Label = "Group2"
         Me.Group3.Name = "Group3"
+        '
+        'EditBox1
+        '
+        Me.EditBox1.Label = "EditBox1"
+        Me.EditBox1.Name = "EditBox1"
+        Me.EditBox1.Text = Nothing
+        '
+        'DropDown1
+        '
+        Me.DropDown1.Label = "DropDown1"
+        Me.DropDown1.Name = "DropDown1"
+        Me.DropDown1.ShowImage = True
         '
         'Ribbon1
         '
@@ -109,6 +126,8 @@
         Me.Group1.PerformLayout()
         Me.Group2.ResumeLayout(False)
         Me.Group2.PerformLayout()
+        Me.Group3.ResumeLayout(False)
+        Me.Group3.PerformLayout()
 
     End Sub
 
@@ -119,6 +138,8 @@
     Friend WithEvents Button2 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Button3 As Microsoft.Office.Tools.Ribbon.RibbonButton
     Friend WithEvents Group3 As Microsoft.Office.Tools.Ribbon.RibbonGroup
+    Friend WithEvents EditBox1 As Microsoft.Office.Tools.Ribbon.RibbonEditBox
+    Friend WithEvents DropDown1 As Microsoft.Office.Tools.Ribbon.RibbonDropDown
 End Class
 
 Partial Class ThisRibbonCollection
