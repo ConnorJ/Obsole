@@ -67,6 +67,7 @@ Public Class Form1
         TextBox1.Text = 10000
         TextBox2.Text = 0.9
         TextBox3.Text = 3
+        TextBox16.Text = 0.01
 
         ComboBox1.Text = "Select from..."
         ComboBox1.Items.Clear()
@@ -440,7 +441,7 @@ Public Class Form1
 
         Dim Buffer As Single
         If IsNumeric(TextBox16.Text) Then
-            If TextBox16.Text > 0 Then
+            If TextBox16.Text >= 0 Then
                 If TextBox16.Text < 1 Then
                     Buffer = CSng(TextBox16.Text)
                 Else
@@ -633,7 +634,9 @@ Public Class Form1
 
             Dim Length_Of_Buy, Length_Of_Redesign As Single
             Dim Int_Buy_Length As Integer
-            Dim Demand, Total_Demand, Sum, Buy_total(Samples) As Single
+            Dim Demand, Total_Demand, Sum, Buy_total(Samples) As Double
+            Dim Average_Demand As Double
+
 
             ' Start Monte Carlo Loop
             For i = 1 To Samples
@@ -653,6 +656,7 @@ Public Class Form1
 
                 'Sample Demands for Buy Lengths
                 For j = 1 To Int_Buy_Length
+                    Average_Demand = Average_Demand + Demand_Mode(j)
                     Demand = Demand_Sampler(j, Demand_Dist(j), Demand_Mode(j), Demand_Stdev(j), Demand_Low(j), Demand_High(j), Demand_Corr(j))
                     Total_Demand = Total_Demand + Demand
                 Next
@@ -699,7 +703,7 @@ Public Class Form1
             Dim Charts_Form As New Form2
 
             Dim Total_Demand_wBuffer As Single = Confidence_Value * (1 + Buffer)
-            Dim Trigger, Buffer_percent As Single
+            Dim Trigger, Trigger2, Trigger3, Buffer_percent, Buffer_percent_modes, Buffer_percent_Sto As Single
 
             For j = 1 To Bin_number
                 For i = 1 To Samples
@@ -716,17 +720,33 @@ Public Class Form1
                             Buffer_percent = (i / Samples)
                         End If
                     End If
+                    If Trigger2 = 0 Then
+                        If Buy_total(i) >= Average_Demand / Samples Then
+                            Trigger2 = 1
+                            Buffer_percent_modes = (i / Samples)
+                        End If
+                    End If
+                    If Trigger3 = 0 Then
+                        If Buy_total(i) >= Confidence_Value Then
+                            Trigger3 = 1
+                            Buffer_percent_Sto = (i / Samples)
+                        End If
+                    End If
                 Next
                 Bin_name = CStr(Buy_total(high_bin) - Bin_width / 2)
                 Charts_Form.Chart1.Series("Total Buy Quanties").Points.AddXY(Bin_name, Bin_Quat(j))
             Next
 
-            Charts_Form.Label1.Text = Math.Round(Mean_value)
+            'Charts_Form.Label1.Text = Math.Round(Mean_value)
+            Charts_Form.Label1.Text = Math.Round(Confidence_Value)
             Charts_Form.Label2.Text = Math.Round(Stddev_value)
-            Charts_Form.Label3.Text = Math.Round(Confidence_Value)
+            'Charts_Form.Label3.Text = Math.Round(Confidence_Value)
+            Charts_Form.Label3.Text = Math.Round(Buffer_percent_Sto * 100, 2) & " %"
             Charts_Form.Label4.Text = Math.Round(((Mean_value) / (Total_Demand) - 1) * 100, 2) & " %"
-            Charts_Form.Label5.Text = Math.Round(Total_Demand)
-            Charts_Form.Label6.Text = Math.Round(Buffer_percent, 4) & " %"
+            Charts_Form.Label5.Text = Math.Round(Average_Demand / Samples)
+            Charts_Form.Label6.Text = Math.Round(Buffer_percent * 100, 2) & " %"
+            Charts_Form.Label12.Text = Math.Round(Total_Demand_wBuffer)
+            Charts_Form.Label14.Text = Math.Round(Buffer_percent_modes * 100, 2) & " %"
 
             If CInt(TextBox1.Text) > 100000 Then
                 MsgBox("Sample was too large and was set to 100,000.")
