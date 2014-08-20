@@ -9,7 +9,7 @@ Public Class Ribbon1
         LTBForm.ShowDialog()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As RibbonControlEventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As RibbonControlEventArgs) Handles ReDesign.Click
         TimeCalcForm.ShowDialog()
     End Sub
 

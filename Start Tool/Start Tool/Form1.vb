@@ -704,7 +704,9 @@ Public Class Form1
 
             Dim Total_Demand_wBuffer As Single = Confidence_Value * (1 + Buffer)
             Dim Trigger, Trigger2, Trigger3, Buffer_percent, Buffer_percent_modes, Buffer_percent_Sto As Single
-
+            Buffer_percent = 1
+            Buffer_percent_modes = 1
+            Buffer_percent_Sto = 1
             For j = 1 To Bin_number
                 For i = 1 To Samples
                     If Buy_total(i) > (min_plot + ((j - 1) * Bin_width)) Then
@@ -747,6 +749,7 @@ Public Class Form1
             Charts_Form.Label6.Text = Math.Round(Buffer_percent * 100, 2) & " %"
             Charts_Form.Label12.Text = Math.Round(Total_Demand_wBuffer)
             Charts_Form.Label14.Text = Math.Round(Buffer_percent_modes * 100, 2) & " %"
+            Charts_Form.TextBox1.Text = Math.Round(Buffer * 100, 2) & " %"
 
             If CInt(TextBox1.Text) > 100000 Then
                 MsgBox("Sample was too large and was set to 100,000.")
@@ -901,6 +904,7 @@ Public Class Form1
             End If
         Next rowArray
     End Sub
+
 
 
 End Class
