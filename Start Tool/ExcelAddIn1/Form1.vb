@@ -740,7 +740,6 @@ Public Class LTBC_FORM
             Charts_Form.Label24.Text = Math.Round(Stddev_value)
             ''''''Charts_Form.Label3.Text = Math.Round(Confidence_Value)
             Charts_Form.Label25.Text = Math.Round(Buffer_percent_Sto * 100, 2) & " %"
-            Charts_Form.Label29.Text = Math.Round(((Mean_value) / (Total_Demand) - 1) * 100, 2) & " %"
             Charts_Form.Label19.Text = Math.Round(Average_Demand / Samples)
             Charts_Form.Label28.Text = Math.Round(Buffer_percent * 100, 2) & " %"
             Charts_Form.Label27.Text = Math.Round(Total_Demand_wBuffer)
