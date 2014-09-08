@@ -1,0 +1,16 @@
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\bin\Debug\ExcelAddIn1.dll
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\bin\Debug\ExcelAddIn1.pdb
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\bin\Debug\ExcelAddIn1.xml
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\bin\Debug\ExcelAddIn1.dll.manifest
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\bin\Debug\ExcelAddIn1.vsto
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.dll
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\bin\Debug\Microsoft.Office.Tools.Common.v4.0.Utilities.xml
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\obj\Debug\ExcelAddIn1.Form2.resources
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\obj\Debug\ExcelAddIn1.Ribbon1.resources
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\obj\Debug\ExcelAddIn1.LTBC_FORM.resources
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\obj\Debug\ExcelAddIn1.Form3.resources
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\obj\Debug\ExcelAddIn1.Resources.resources
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\obj\Debug\Obsolescence Tool.vbproj.GenerateResource.Cache
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\obj\Debug\ExcelAddIn1.dll
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\obj\Debug\ExcelAddIn1.xml
+C:\Users\Connor Jennings\Documents\GitHub\Obsole\Start Tool\ExcelAddIn1\obj\Debug\ExcelAddIn1.pdb

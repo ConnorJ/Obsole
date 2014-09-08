@@ -2,6 +2,9 @@
 
 Public Class LTBC_FORM
     Dim Form1 As LTBC_FORM
+
+    Public Shared Samples As Single
+    Public Shared Buy_total(10000) As Double
     Dim row1() As String = {"1", "Normal", "10000", "100", "NA", "NA", "0"}
     Dim row2() As String = {"2", "Normal", "10000", "100", "NA", "NA", "0"}
     Dim row3() As String = {"3", "Normal", "10000", "100", "NA", "NA", "0"}
@@ -380,7 +383,7 @@ Public Class LTBC_FORM
         Dim K As String
         K = "Error: " & vbNewLine
 
-        Dim Samples As Single
+
         If IsNumeric(TextBox1.Text) Then
             If TextBox1.Text > 0 Then
                 Samples = CSng(TextBox1.Text)
@@ -630,7 +633,9 @@ Public Class LTBC_FORM
 
             Dim Length_Of_Buy, Length_Of_Redesign As Single
             Dim Int_Buy_Length As Integer
-            Dim Demand, Total_Demand, Sum, Buy_total(Samples) As Double
+            Dim Demand, Total_Demand, Sum As Double
+            ReDim Buy_total(Samples)
+
             Dim Average_Demand As Double
 
 
