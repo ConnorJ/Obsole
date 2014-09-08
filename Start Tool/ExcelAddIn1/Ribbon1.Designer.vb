@@ -47,6 +47,7 @@
         Me.Button5 = Me.Factory.CreateRibbonButton
         Me.Button6 = Me.Factory.CreateRibbonButton
         Me.Group1 = Me.Factory.CreateRibbonGroup
+        Me.Button7 = Me.Factory.CreateRibbonButton
         Me.Options = Me.Factory.CreateRibbonGroup
         Me.ReDesign = Me.Factory.CreateRibbonButton
         Me.Button3 = Me.Factory.CreateRibbonButton
@@ -54,7 +55,6 @@
         Me.Group3 = Me.Factory.CreateRibbonGroup
         Me.EditBox1 = Me.Factory.CreateRibbonEditBox
         Me.DropDown1 = Me.Factory.CreateRibbonDropDown
-        Me.Button7 = Me.Factory.CreateRibbonButton
         Me.Tab1.SuspendLayout()
         Me.Group2.SuspendLayout()
         Me.Group1.SuspendLayout()
@@ -100,6 +100,11 @@
         Me.Group1.Label = "Life Time Buy Calc"
         Me.Group1.Name = "Group1"
         '
+        'Button7
+        '
+        Me.Button7.Label = "Life Time Buy Calc"
+        Me.Button7.Name = "Button7"
+        '
         'Options
         '
         Me.Options.Items.Add(Me.ReDesign)
@@ -144,11 +149,6 @@
         Me.DropDown1.Label = "DataBase"
         Me.DropDown1.Name = "DropDown1"
         Me.DropDown1.ShowImage = True
-        '
-        'Button7
-        '
-        Me.Button7.Label = "Life Time Buy Calc"
-        Me.Button7.Name = "Button7"
         '
         'Ribbon1
         '
